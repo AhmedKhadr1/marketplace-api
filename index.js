@@ -2,6 +2,12 @@ const express = require('express');
 const mysql = require('mysql2');
 
 const app = express();
+console.log('🧪 DB_HOST:', process.env.DB_HOST);
+console.log('🧪 DB_USER:', process.env.DB_USER);
+console.log('🧪 DB_PASS:', process.env.DB_PASS ? '✅ loaded' : '❌ missing');
+console.log('🧪 DB_PORT:', process.env.DB_PORT);
+console.log('🧪 DB_NAME:', process.env.DB_NAME);
+
 app.use(express.json()); // Allows us to read JSON in requests
 
 const dbRegion1 = mysql.createPool({

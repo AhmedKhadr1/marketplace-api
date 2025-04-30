@@ -130,6 +130,27 @@ app.get('/items/search', async (req, res) => {
 app.get('/test', (req, res) => {
     res.send('✅ Test route is working!');
   });
+  app.get('/env-debug', (req, res) => {
+    res.json({
+      DB_HOST: process.env.DB_HOST,
+      DB_PORT: process.env.DB_PORT,
+      DB_USER: process.env.DB_USER,
+      DB_PASS: process.env.DB_PASS ? '✅ loaded' : '❌ missing',
+      DB_NAME: process.env.DB_NAME,
+  
+      REGION2_HOST: process.env.DB_REGION2_HOST,
+      REGION2_NAME: process.env.DB_REGION2_NAME,
+      REGION2_PORT: process.env.DB_REGION2_PORT,
+  
+      SHINKANSEN_HOST: process.env.DB_SHINKANSEN_HOST,
+      SHINKANSEN_NAME: process.env.DB_SHINKANSEN_NAME,
+      SHINKANSEN_PORT: process.env.DB_SHINKANSEN_PORT,
+  
+      METRO_HOST: process.env.DB_METRO_HOST,
+      METRO_NAME: process.env.DB_METRO_NAME,
+      METRO_PORT: process.env.DB_METRO_PORT,
+    });
+  });
   
 // ----------------------------
 // Start the server

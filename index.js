@@ -23,7 +23,7 @@ const dbRegion1 = mysql.createPool({
 const dbRegion2 = mysql.createPool({
   host: process.env.DB_REGION2_HOST,
   user: process.env.DB_USER,
-  password: process.env.DB_PASS,
+  password: process.env.DB_REGION2_PASS,
   database: process.env.DB_REGION2_NAME,
   port: parseInt(process.env.DB_REGION2_PORT)
 });
@@ -31,7 +31,7 @@ const dbRegion2 = mysql.createPool({
 const dbShinkansen = mysql.createPool({
   host: process.env.DB_SHINKANSEN_HOST,
   user: process.env.DB_USER,
-  password: process.env.DB_PASS,
+  password: process.env.DB_SHINKANSEN_PASS,
   database: process.env.DB_SHINKANSEN_NAME,
   port: parseInt(process.env.DB_SHINKANSEN_PORT)
 });
@@ -39,10 +39,11 @@ const dbShinkansen = mysql.createPool({
 const dbMetro = mysql.createPool({
   host: process.env.DB_METRO_HOST,
   user: process.env.DB_USER,
-  password: process.env.DB_PASS,
+  password: process.env.DB_METRO_PASS,
   database: process.env.DB_METRO_NAME,
   port: parseInt(process.env.DB_METRO_PORT)
 });
+
 
 
 // ----------------------------

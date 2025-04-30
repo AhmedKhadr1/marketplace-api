@@ -15,7 +15,7 @@ const db = mysql.createConnection( {
   'password': 'MOVJGMFzfkGkMdSyjRdkmTFTbHiWwRBv',
   'database': 'railway'
       
-        });
+      });
 
 // Final unified item search
 app.get('/items/search', (req, res) => {
@@ -60,6 +60,7 @@ app.get('/items/search', (req, res) => {
       s.store_name,
       s.rating AS seller_rating,
       c.main_cat_name AS category_name
+      f.image
     FROM item_freq f
     JOIN item_infreq i ON f.item_id = i.item_id
     JOIN category c ON i.category_id = c.category_id

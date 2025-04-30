@@ -4,33 +4,38 @@ const mysql = require('mysql2');
 const app = express();
 app.use(express.json()); // Allows us to read JSON in requests
 
-// Region 1 (item data)
 const dbRegion1 = mysql.createPool({
-  host: 'yamabiko.proxy.rlwy.net',
-  user: 'root',
-  password: 'KgweKTgBGTEPnCcfXeDHWWFCfUyFzgWJ',
-  database: 'region_1',
-  port: 31329
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
+  port: parseInt(process.env.DB_PORT)
 });
 
-// Region 2 (item data)
 const dbRegion2 = mysql.createPool({
-  host: 'nozomi.proxy.rlwy.net',
-  user: 'root',
-  password: 'oXgWHuDdAWsrYqixVirtgYVJOyCyxmT',
-  database: 'region_2',
-  port: 35771
+  host: process.env.DB_REGION2_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_REGION2_NAME,
+  port: parseInt(process.env.DB_REGION2_PORT)
 });
 
+const dbShinkansen = mysql.createPool({
+  host: process.env.DB_SHINKANSEN_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_SHINKANSEN_NAME,
+  port: parseInt(process.env.DB_SHINKANSEN_PORT)
+});
 
-// Metro (user/account database)
 const dbMetro = mysql.createPool({
-  host: 'metro.proxy.rlwy.net',
-  user: 'root',
-  password: 'MOVJGMFzfkGkMdSyjRdkmTFTbHiWwRBv',
-  database: 'railway',
-  port: 16791
+  host: process.env.DB_METRO_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_METRO_NAME,
+  port: parseInt(process.env.DB_METRO_PORT)
 });
+
 
 // ----------------------------
 // Function V - Search Items

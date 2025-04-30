@@ -59,7 +59,7 @@ app.get('/items/search', (req, res) => {
       f.rating AS item_rating,
       s.store_name,
       s.rating AS seller_rating,
-      c.main_cat_name AS category_name
+      c.main_cat_name AS category_name,
       f.image
     FROM item_freq f
     JOIN item_infreq i ON f.item_id = i.item_id
@@ -80,11 +80,14 @@ app.get('/items/search', (req, res) => {
       actual_price: parseFloat(row.actual_price),
       discount_price: row.discount_price ? parseFloat(row.discount_price) : null,
       item_rating: row.item_rating ? parseFloat(row.item_rating) : null,
+      image: row.image,
       seller: {
         store_name: row.store_name,
         rating: row.seller_rating ? parseFloat(row.seller_rating) : null
       }
     }));
+    
+    
   
     res.setHeader('Content-Type', 'application/json');
 res.send(JSON.stringify(formatted, null, 2));
